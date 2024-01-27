@@ -1,0 +1,155 @@
+﻿<Window x:Class="HR___Manager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HR___Manager" xmlns:viewmodel="clr-namespace:HR___Manager.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:KorzinaMV}"
+        mc:Ignorable="d"
+        ResizeMode="CanMinimize"
+        WindowStartupLocation="CenterScreen"
+        Title="BastionShop - Главное окно" Height="600" Width="800" 
+        WindowStyle="None">
+    <Window.Resources>
+        <Style x:Key="PrimaryButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#2a2a2a"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="Border" CornerRadius="5" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#1f1f1f"/>
+                                <Setter TargetName="Border" Property="BorderBrush" Value="#1f1f1f"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#3f3f3f"/>
+                                <Setter TargetName="Border" Property="BorderBrush" Value="#3f3f3f"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="#1C1C1C">
+        <!-- Кнопки закрытия и свертывания окна -->
+        <TextBlock Text="HRManager" HorizontalAlignment="Left" FontSize="22" FontWeight="Bold" 
+                   VerticalAlignment="Top"  
+                   Margin="40,0,0,0" Foreground="White"/>
+
+        
+        <StackPanel HorizontalAlignment="Right"  Orientation="Horizontal" VerticalAlignment="Top">
+            <Menu  Margin="0,12,0,0" Height="23" Width="85" FontSize="15" VerticalAlignment="Top" Background="Transparent" BorderBrush="#1C1C1C" Foreground="White">
+                <MenuItem Header="Настройки" Height="23">
+                    <MenuItem Header="Управление" Background="#1C1C1C" BorderBrush="#1C1C1C" Foreground="#FFFFFF">
+                        <MenuItem Name="Info" Click="Info_Click" Background="#1C1C1C" BorderBrush="#1C1C1C" Foreground="#FFFFFF" Header="О приложении"/>
+                        <MenuItem Click="MenuItem_Click" Background="#1C1C1C" BorderBrush="#1C1C1C" Foreground="#FFFFFF" Header="Сменить тему"/>
+                        <MenuItem Click="Minimize_Click" Background="#1C1C1C" BorderBrush="#1C1C1C" Foreground="#FFFFFF" Header="Свернуть окно"/>
+                        <MenuItem Click="Close_Click" Background="#1C1C1C" BorderBrush="#1C1C1C" Foreground="#FFFFFF" Header="Закрыть приложение"/>
+                    </MenuItem>
+                </MenuItem>
+            </Menu>
+            <Button Click="Minimize_Click" Content="_" Width="30" Height="25" Style="{StaticResource PrimaryButtonStyle}"
+                    Background="Transparent" BorderBrush="White" Foreground="#FFFFFF"/>
+            <Button Click="Close_Click" Content="X" Width="30" Height="25" Style="{StaticResource PrimaryButtonStyle}" 
+                    Background="Transparent" BorderBrush="White" Foreground="#FFFFFF"/>
+        </StackPanel>
+
+        <!--{Binding BtnVisib}-->
+        <Grid Visibility="Visible">
+            <Border Background="Black" Opacity="0.7"></Border>
+            <Border Background="#1C1C1C" CornerRadius="50" Width="700" Height="500">
+                <Grid >
+                    <TextBlock Text="О продукте" HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Top" FontSize="22" Margin="0,20,0,0"/>
+                   
+                    <TextBlock Background="Transparent" FontFamily="Times New Roman" TextWrapping="WrapWithOverflow"
+                               FontSize="20" Width="450" Height="300" Text="{Binding ProductBut.Discription}"
+                               TextAlignment="Center" Foreground="White" RenderTransformOrigin="0.5,0.5"/>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <!--{Binding BtnVisib2}-->
+      
+
+        <!--{Binding BtnVisib3}-->
+        <Grid Visibility="Visible"  >
+            <Border Background="Black" Opacity="0.7"></Border>
+            <Border Background="#1C1C1C" CornerRadius="50" Width="700" Height="500">
+                <Grid>
+                    <TextBlock Text="Корзина" HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Top" FontSize="22" Margin="0,20,0,0"/>
+                    <Button HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,45"
+                    Content="Купить"  Click="MenuItem_Click" FontSize="18" Width="100" Height="25" 
+                    Background="Transparent" BorderBrush="White"
+                    Foreground="White" Style="{StaticResource PrimaryButtonStyle}"/>
+                    <Button HorizontalAlignment="Center" Name="Redact" VerticalAlignment="Bottom" Margin="0,0,400,45"
+                    Content="Редактировать"  Click="Redact_Click" FontSize="18" Width="100" Height="25" 
+                    Background="Transparent" BorderBrush="White"
+                    Foreground="White" Style="{StaticResource PrimaryButtonStyle}"/>
+                    <Button HorizontalAlignment="Center" Name="Add" VerticalAlignment="Bottom" Margin="400,0,0,45"
+                    Content="Добавить"  Click="Add_Click" FontSize="18" Width="100" Height="25" 
+                    Background="Transparent" BorderBrush="White"
+                    Foreground="White" Style="{StaticResource PrimaryButtonStyle}"/>
+                    
+                    <Grid>
+                        <DataGrid
+                            VerticalAlignment="Center"
+                            
+                            
+                            HorizontalAlignment="Center"
+                            Height="350"
+                            Width="600"
+                            Grid.Row="1"
+                            IsReadOnly="True"
+                            AutoGenerateColumns="False"
+                            SelectedItem="{Binding SelectAccountData}"
+                            ItemsSource="{Binding EmployeesCollection}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn
+                            Header="Имя"
+                            Binding="{Binding Name}" />
+                                <DataGridTextColumn
+                            Header="Фамилия"
+                            Binding="{Binding Surname}"/>
+                                <!--<DataGridTextColumn
+                            Header="Описание"
+                            Binding="{Binding Discription}"/>-->
+                                <DataGridTextColumn
+                            Header="Отчество"
+                            Binding="{Binding Surname}"/>
+                                <DataGridTextColumn
+                            Header="День рождения"
+                            Binding="{Binding Patronymic}"/>
+                                <DataGridTextColumn
+                            Header="Размеры"
+                            Binding="{Binding Birthday}"/>
+                                <DataGridTextColumn
+Header="Телефон"
+Binding="{Binding EmploymentContractNumber}"/>
+                                <DataGridTextColumn
+Header="Дата Увольнения"
+Binding="{Binding DateOfDismissal}"/>
+                                <DataGridTextColumn
+Header="Id пользователя"
+Binding="{Binding UserInfoID}"/>
+       
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

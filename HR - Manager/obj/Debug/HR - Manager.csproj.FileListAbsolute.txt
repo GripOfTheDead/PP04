@@ -1,0 +1,26 @@
+D:\Visual Studio)\Project\HR - Manager\HR - Manager\obj\Debug\HR - Manager.csproj.AssemblyReference.cache
+D:\Visual Studio)\Project\HR - Manager\HR - Manager\obj\Debug\View\AuthWindow.g.cs
+D:\Visual Studio)\Project\HR - Manager\HR - Manager\obj\Debug\View\MainWindow.g.cs
+D:\Visual Studio)\Project\HR - Manager\HR - Manager\obj\Debug\App.g.cs
+D:\Visual Studio)\Project\HR - Manager\HR - Manager\obj\Debug\HR - Manager_MarkupCompile.cache
+D:\Visual Studio)\Project\HR - Manager\HR - Manager\obj\Debug\HR - Manager_MarkupCompile.lref
+D:\Visual Studio)\Project\HR - Manager\HR - Manager\bin\Debug\HR - Manager.exe.config
+D:\Visual Studio)\Project\HR - Manager\HR - Manager\bin\Debug\HR - Manager.exe
+D:\Visual Studio)\Project\HR - Manager\HR - Manager\bin\Debug\HR - Manager.pdb
+D:\Visual Studio)\Project\HR - Manager\HR - Manager\obj\Debug\View\AuthWindow.baml
+D:\Visual Studio)\Project\HR - Manager\HR - Manager\obj\Debug\View\MainWindow.baml
+D:\Visual Studio)\Project\HR - Manager\HR - Manager\obj\Debug\HR - Manager.g.resources
+D:\Visual Studio)\Project\HR - Manager\HR - Manager\obj\Debug\HR___Manager.Properties.Resources.resources
+D:\Visual Studio)\Project\HR - Manager\HR - Manager\obj\Debug\HR - Manager.csproj.GenerateResource.cache
+D:\Visual Studio)\Project\HR - Manager\HR - Manager\obj\Debug\HR - Manager.csproj.CoreCompileInputs.cache
+D:\Visual Studio)\Project\HR - Manager\HR - Manager\obj\Debug\HR - Manager.exe
+D:\Visual Studio)\Project\HR - Manager\HR - Manager\obj\Debug\HR - Manager.pdb
+D:\Visual Studio)\Project\HR - Manager\HR - Manager\obj\Debug\HR - Manager_Content.g.cs
+D:\Visual Studio)\Project\HR - Manager\HR - Manager\bin\Debug\EntityFramework.dll
+D:\Visual Studio)\Project\HR - Manager\HR - Manager\bin\Debug\EntityFramework.SqlServer.dll
+D:\Visual Studio)\Project\HR - Manager\HR - Manager\bin\Debug\EntityFramework.xml
+D:\Visual Studio)\Project\HR - Manager\HR - Manager\bin\Debug\EntityFramework.SqlServer.xml
+D:\Visual Studio)\Project\HR - Manager\HR - Manager\bin\Debug\ru\EntityFramework.resources.dll
+D:\Visual Studio)\Project\HR - Manager\HR - Manager\obj\Debug\HR - Manager.csproj.CopyComplete
+D:\Visual Studio)\Project\HR - Manager\HR - Manager\obj\Debug\View\AddOrEditWindpws.g.cs
+D:\Visual Studio)\Project\HR - Manager\HR - Manager\obj\Debug\View\AddOrEditWindpws.baml

@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище HRManagerModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="50" />
+    <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
+    <Property Name="Birthday" Type="date" />
+    <Property Name="HireDate" Type="date" />
+    <Property Name="EmploymentContractNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="DateOfDismissal" Type="date" />
+    <Property Name="UserInfoID" Type="int" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Login" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserInfoID" Type="int" />
+    <Property Name="RoleId" Type="int" />
+  </EntityType>
+  <EntityType Name="UserInfo">
+    <Key>
+      <PropertyRef Name="UserInfoId" />
+    </Key>
+    <Property Name="UserInfoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserSurname" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserPatronymic" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="int" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <Association Name="FK__Employees__UserI__3E52440B">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UserInfoId" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="UserInfoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__User__RoleId__3B75D760">
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserRole">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__User__UserInfoID__3A81B327">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UserInfoId" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="UserInfoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище HRManagerModelContainer">
+    <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Employees__UserI__3E52440B" Association="Self.FK__Employees__UserI__3E52440B">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK__User__RoleId__3B75D760" Association="Self.FK__User__RoleId__3B75D760">
+      <End Role="UserRole" EntitySet="UserRole" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK__User__UserInfoID__3A81B327" Association="Self.FK__User__UserInfoID__3A81B327">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

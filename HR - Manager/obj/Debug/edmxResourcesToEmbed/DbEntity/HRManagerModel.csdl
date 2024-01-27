@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HRManagerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Birthday" Type="DateTime" Precision="0" />
+    <Property Name="HireDate" Type="DateTime" Precision="0" />
+    <Property Name="EmploymentContractNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DateOfDismissal" Type="DateTime" Precision="0" />
+    <Property Name="UserInfoID" Type="Int32" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK__Employees__UserI__3E52440B" FromRole="Employees" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserInfoID" Type="Int32" />
+    <Property Name="RoleId" Type="Int32" />
+    <NavigationProperty Name="UserRole" Relationship="Self.FK__User__RoleId__3B75D760" FromRole="User" ToRole="UserRole" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK__User__UserInfoID__3A81B327" FromRole="User" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="UserInfo">
+    <Key>
+      <PropertyRef Name="UserInfoId" />
+    </Key>
+    <Property Name="UserInfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserPatronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="Int32" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK__Employees__UserI__3E52440B" FromRole="UserInfo" ToRole="Employees" />
+    <NavigationProperty Name="User" Relationship="Self.FK__User__UserInfoID__3A81B327" FromRole="UserInfo" ToRole="User" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="Self.FK__User__RoleId__3B75D760" FromRole="UserRole" ToRole="User" />
+  </EntityType>
+  <Association Name="FK__Employees__UserI__3E52440B">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UserInfoId" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="UserInfoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__User__RoleId__3B75D760">
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserRole">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__User__UserInfoID__3A81B327">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UserInfoId" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="UserInfoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HRManagerEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Employees" EntityType="Self.Employees" />
+    <EntitySet Name="User" EntityType="Self.User" />
+    <EntitySet Name="UserInfo" EntityType="Self.UserInfo" />
+    <EntitySet Name="UserRole" EntityType="Self.UserRole" />
+    <AssociationSet Name="FK__Employees__UserI__3E52440B" Association="Self.FK__Employees__UserI__3E52440B">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK__User__RoleId__3B75D760" Association="Self.FK__User__RoleId__3B75D760">
+      <End Role="UserRole" EntitySet="UserRole" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK__User__UserInfoID__3A81B327" Association="Self.FK__User__UserInfoID__3A81B327">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
